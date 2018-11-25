@@ -10,6 +10,7 @@ import spring.java.domain.BlogPost;
 import spring.java.domain.DataSource;
 import spring.java.service.BlogPostService;
 import spring.java.service.EmailService;
+import spring.java.service.ServiceManager;
 
 public class MainApplication {
 
@@ -35,6 +36,9 @@ public class MainApplication {
 		
 		EmailService emailService = applicationContext.getBean(EmailService.class);
 		emailService.sendEmail();
+		
+		ServiceManager serviceManager = applicationContext.getBean(ServiceManager.class);
+		serviceManager.sendBlogPost(blogPost);
 		
 		((ConfigurableApplicationContext) applicationContext).close(); 
 	}
