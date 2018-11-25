@@ -1,13 +1,17 @@
 package spring.java.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import spring.java.service.BlogPostService;
 import spring.java.service.impl.BlogPostServiceImpl;
 
+//@Configuration
+@ComponentScan(basePackages= {"spring.java"})
 public class JavaConfig {
 
-	@Bean //default bean name is methodName
+	@Bean //default bean id is methodName
 	public BlogPostService blogPostService() {
 		return new BlogPostServiceImpl();
 	}
