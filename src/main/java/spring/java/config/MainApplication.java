@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import spring.java.domain.BlogPost;
 import spring.java.domain.DataSource;
 import spring.java.service.BlogPostService;
+import spring.java.service.EmailService;
 
 public class MainApplication {
 
@@ -31,6 +32,9 @@ public class MainApplication {
 		LOGGER.debug("dataSource: " + dataSource.getUrl());
 		LOGGER.debug("dataSource: " + dataSource.getUsername());
 		LOGGER.debug("dataSource: " + dataSource.getPassword());
+		
+		EmailService emailService = applicationContext.getBean(EmailService.class);
+		emailService.sendEmail();
 		
 		((ConfigurableApplicationContext) applicationContext).close(); 
 	}
